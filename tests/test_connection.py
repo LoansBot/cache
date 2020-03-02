@@ -8,7 +8,7 @@ import time
 
 def main():
     memcache_host = os.environ['MEMCACHED_HOST']
-    memcache_port = os.environ['MEMCACHED_PORT']
+    memcache_port = int(os.environ['MEMCACHED_PORT'])
     mc_client = membase.Client((memcache_host, memcache_port))
 
     print('Fetching key test_key:')
