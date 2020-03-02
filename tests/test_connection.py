@@ -19,13 +19,14 @@ def main():
 
     original = {'foo': 7}
     original_json = json.dumps(original)
-    print(f'Setting key test_key to: {original_json} (2 second expire time)')
-    mc_client.set('test_key', original_json, expire=2)
+    original_bytes = original_json.encode('utf-8')
+    print(f'Setting key test_key to: {original_bytes} (2 second expire time)')
+    mc_client.set('test_key', original_bytes, expire=2)
 
     print('Fetching key test_key:')
     val = mc_client.get('test_key')
-    if val != original_json:
-        print(f'Got weird value! Expected {original_json}, got {val}')
+    if val != original_bytes:
+        print(f'Got weird value! Expected {original_bytes}, got {val}')
         sys.exit(1)
 
     print('Sleeping 2.2 seconds to allow expiration')
