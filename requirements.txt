@@ -1,2 +1,2 @@
-pymemcache==3.0.0
-six==1.14.0
+flake8==5.0.4
+pymemcache==4.0.0
